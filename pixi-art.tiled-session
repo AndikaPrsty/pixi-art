@@ -1,0 +1,88 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+        "tiles",
+        "."
+    ],
+    "fileStates": {
+        "/home/pras/Downloads/modernexteriors-win/Modern_Exteriors_32x32/ME_Theme_Sorter_32x32/11_Camping_32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "11_Camping_32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "1_Terrains_and_Fences_32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "2_City_Terrains_32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 0.6851
+        },
+        "7_Villas_32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1.0906
+        },
+        "8_Worksite_32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "pixi-art.tmx": {
+            "scale": 1.0786458333333333,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 480.2317720907775,
+                "y": 320.3090294543699
+            }
+        },
+        "pixi-art.tmx#17_Garden_32x32": {
+            "scaleInEditor": 1
+        },
+        "pixi-art.tmx#1_Terrains_and_Fences_32x32": {
+            "scaleInDock": 1
+        },
+        "pixi-art.tmx#21_Beach_32x32": {
+            "scaleInDock": 1
+        },
+        "pixi-art.tmx#8_Worksite_32x32": {
+            "scaleInDock": 1
+        },
+        "tiles/11_Camping_32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tiles/1_Terrains_and_Fences_32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tiles/8_Worksite_32x32.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "/home/pras/Downloads/modernexteriors-win/Modern_Exteriors_32x32/ME_Theme_Sorter_32x32",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+    ],
+    "project": "pixi-art.tiled-project",
+    "recentFiles": [
+        "/home/pras/Downloads/modernexteriors-win/Modern_Exteriors_32x32/ME_Theme_Sorter_32x32/11_Camping_32x32.tsx",
+        "tiles/8_Worksite_32x32.tsx",
+        "tiles/1_Terrains_and_Fences_32x32.tsx",
+        "tiles/11_Camping_32x32.tsx",
+        "pixi-art.tmx",
+        "1_Terrains_and_Fences_32x32.tsx",
+        "2_City_Terrains_32x32.tsx",
+        "7_Villas_32x32.tsx",
+        "8_Worksite_32x32.tsx",
+        "11_Camping_32x32.tsx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "tsx"
+}

@@ -1,0 +1,79 @@
+{"frames": {
+
+"wind_turbin-0.png":
+{
+	"frame": {"x":1,"y":1,"w":180,"h":298},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":21,"w":180,"h":298},
+	"sourceSize": {"w":224,"h":320}
+},
+"wind_turbin-1.png":
+{
+	"frame": {"x":183,"y":1,"w":174,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":19,"y":27,"w":174,"h":292},
+	"sourceSize": {"w":224,"h":320}
+},
+"wind_turbin-2.png":
+{
+	"frame": {"x":716,"y":1,"w":162,"h":288},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":9,"y":31,"w":162,"h":288},
+	"sourceSize": {"w":224,"h":320}
+},
+"wind_turbin-3.png":
+{
+	"frame": {"x":1,"y":301,"w":184,"h":268},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":1,"y":51,"w":184,"h":268},
+	"sourceSize": {"w":224,"h":320}
+},
+"wind_turbin-4.png":
+{
+	"frame": {"x":271,"y":295,"w":194,"h":258},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":3,"y":61,"w":194,"h":258},
+	"sourceSize": {"w":224,"h":320}
+},
+"wind_turbin-5.png":
+{
+	"frame": {"x":535,"y":291,"w":200,"h":248},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":71,"w":200,"h":248},
+	"sourceSize": {"w":224,"h":320}
+},
+"wind_turbin-6.png":
+{
+	"frame": {"x":535,"y":1,"w":179,"h":280},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":45,"y":39,"w":179,"h":280},
+	"sourceSize": {"w":224,"h":320}
+},
+"wind_turbin-7.png":
+{
+	"frame": {"x":359,"y":1,"w":174,"h":292},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":27,"w":174,"h":292},
+	"sourceSize": {"w":224,"h":320}
+}},
+"animations": {
+	"wind_turbin": ["wind_turbin-0.png","wind_turbin-1.png","wind_turbin-2.png","wind_turbin-3.png","wind_turbin-4.png","wind_turbin-5.png","wind_turbin-6.png","wind_turbin-7.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "wind_turbine.png",
+	"format": "RGBA8888",
+	"size": {"w":879,"h":492},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:351dac5890bc6d4f4ebb1a9f27d91456:dd74472c714bd87fc2b2ba52482b3955:3b3d91063ecf1aafc9f9e0fa32c477d7$"
+}
+}
