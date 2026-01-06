@@ -1,127 +1,355 @@
-{"frames": {
-
-"railing_gate-0.png":
 {
-	"frame": {"x":163,"y":1,"w":160,"h":77},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":19,"w":160,"h":77},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-1.png":
-{
-	"frame": {"x":163,"y":163,"w":160,"h":77},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":19,"w":160,"h":77},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-2.png":
-{
-	"frame": {"x":163,"y":325,"w":160,"h":77},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":19,"w":160,"h":77},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-3.png":
-{
-	"frame": {"x":1,"y":363,"w":160,"h":85},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":11,"w":160,"h":85},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-4.png":
-{
-	"frame": {"x":1,"y":274,"w":160,"h":87},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":9,"w":160,"h":87},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-5.png":
-{
-	"frame": {"x":1,"y":1,"w":160,"h":89},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":7,"w":160,"h":89},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-6.png":
-{
-	"frame": {"x":1,"y":92,"w":160,"h":89},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":7,"w":160,"h":89},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-7.png":
-{
-	"frame": {"x":1,"y":183,"w":160,"h":89},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":7,"w":160,"h":89},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-8.png":
-{
-	"frame": {"x":1,"y":92,"w":160,"h":89},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":7,"w":160,"h":89},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-9.png":
-{
-	"frame": {"x":1,"y":1,"w":160,"h":89},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":7,"w":160,"h":89},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-11.png":
-{
-	"frame": {"x":1,"y":274,"w":160,"h":87},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":9,"w":160,"h":87},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-12.png":
-{
-	"frame": {"x":1,"y":363,"w":160,"h":85},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":11,"w":160,"h":85},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-13.png":
-{
-	"frame": {"x":163,"y":325,"w":160,"h":77},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":19,"w":160,"h":77},
-	"sourceSize": {"w":160,"h":96}
-},
-"railing_gate-14.png":
-{
-	"frame": {"x":163,"y":163,"w":160,"h":77},
-	"rotated": true,
-	"trimmed": true,
-	"spriteSourceSize": {"x":0,"y":19,"w":160,"h":77},
-	"sourceSize": {"w":160,"h":96}
-}},
-"animations": {
-	"railing_gate": ["railing_gate-0.png","railing_gate-1.png","railing_gate-2.png","railing_gate-3.png","railing_gate-4.png","railing_gate-5.png","railing_gate-6.png","railing_gate-7.png","railing_gate-8.png","railing_gate-9.png","railing_gate-11.png","railing_gate-12.png","railing_gate-13.png","railing_gate-14.png"]
-},
-"meta": {
-	"app": "https://www.codeandweb.com/texturepacker",
-	"version": "1.1",
-	"image": "railing_gate.png",
-	"format": "RGBA8888",
-	"size": {"w":241,"h":486},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:0d7e8f50003d18d7531cb2776e9424b5:c37090b7500993b261980f2833bd0e15:cf167859af2f092fd4eb5bf8c74ec5a5$"
-}
+  "frames": {
+    "05.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 160,
+        "h": 88
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 160,
+        "h": 88
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "06.png": {
+      "frame": {
+        "x": 0,
+        "y": 88,
+        "w": 160,
+        "h": 88
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 160,
+        "h": 88
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "07.png": {
+      "frame": {
+        "x": 0,
+        "y": 176,
+        "w": 160,
+        "h": 88
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 160,
+        "h": 88
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "04.png": {
+      "frame": {
+        "x": 0,
+        "y": 264,
+        "w": 160,
+        "h": 86
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 10,
+        "w": 160,
+        "h": 86
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "03.png": {
+      "frame": {
+        "x": 0,
+        "y": 350,
+        "w": 160,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 12,
+        "w": 160,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "00.png": {
+      "frame": {
+        "x": 0,
+        "y": 434,
+        "w": 160,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 20,
+        "w": 160,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "01.png": {
+      "frame": {
+        "x": 0,
+        "y": 510,
+        "w": 160,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 20,
+        "w": 160,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "02.png": {
+      "frame": {
+        "x": 0,
+        "y": 586,
+        "w": 160,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 20,
+        "w": 160,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "13.png": {
+      "frame": {
+        "x": 0,
+        "y": 510,
+        "w": 160,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 20,
+        "w": 160,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "12.png": {
+      "frame": {
+        "x": 0,
+        "y": 586,
+        "w": 160,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 20,
+        "w": 160,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "11.png": {
+      "frame": {
+        "x": 0,
+        "y": 350,
+        "w": 160,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 12,
+        "w": 160,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "10.png": {
+      "frame": {
+        "x": 0,
+        "y": 264,
+        "w": 160,
+        "h": 86
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 10,
+        "w": 160,
+        "h": 86
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "09.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 160,
+        "h": 88
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 160,
+        "h": 88
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "08.png": {
+      "frame": {
+        "x": 0,
+        "y": 88,
+        "w": 160,
+        "h": 88
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 8,
+        "w": 160,
+        "h": 88
+      },
+      "sourceSize": {
+        "w": 160,
+        "h": 96
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"open": ["00.png", "01.png", "02.png", "03.png", "04.png", "05.png", "06.png"],
+		"close": ["07.png", "08.png", "03.png", "04.png", "05.png", "06.png", "07.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "railing_gate.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 160,
+      "h": 662
+    },
+    "scale": 1
+  }
 }

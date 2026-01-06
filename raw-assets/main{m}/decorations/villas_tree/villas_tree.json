@@ -1,0 +1,39 @@
+{
+  "frames": {
+    "ME_Singles_Villas_32x32_Tree_1.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 94,
+        "h": 110
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 18,
+        "w": 94,
+        "h": 110
+      },
+      "sourceSize": {
+        "w": 96,
+        "h": 128
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "villas_tree.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 94,
+      "h": 110
+    },
+    "scale": 1
+  }
+}
