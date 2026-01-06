@@ -33,6 +33,106 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "park.tmx": {
+            "scale": 1.3511,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 804.5296425135075,
+                "y": 455.5547331803716
+            }
+        },
+        "park.tmx#10_Vehicles_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#11_Camping_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#12_Hotel_and_Hospital_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#13_School_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#14_Swimming_Pool_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#15_Police_Station_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#16_Office_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#17_Garden_32x32": {
+            "scaleInDock": 0.5911
+        },
+        "park.tmx#18_Fire_Station_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#19_Graveyard_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#1_Terrains_and_Fences_32x32": {
+            "scaleInDock": 0.3301
+        },
+        "park.tmx#20_Subway_and_Train_Station_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#21_Beach_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#22_Post_Office_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#23_MIlitary_Base_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#24_Additional_Houses_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#2_City_Terrains_32x32": {
+            "scaleInDock": 0.1767
+        },
+        "park.tmx#3_City_Props_32x32": {
+            "scaleInDock": 0.559
+        },
+        "park.tmx#4_Generic_Buildings_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#5_Floor_Modular_Buildings_32x32": {
+            "scaleInDock": 0.8037
+        },
+        "park.tmx#6_Garage_Sales_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#7_Villas_32x32": {
+            "scaleInDock": 1.1206
+        },
+        "park.tmx#8_Worksite_32x32": {
+            "scaleInDock": 1
+        },
+        "park.tmx#9_Shopping_Center_and_Markets_32x32": {
+            "scaleInDock": 1
+        },
+        "park_16px.tmx": {
+            "scale": 1.2485,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 676.0112134561473,
+                "y": 356.8281938325991
+            }
+        },
+        "park_16px.tmx#1_Terrains_and_Fences_32x32": {
+            "scaleInDock": 1.0333
+        },
+        "park_16px.tmx#2_City_Terrains_32x32": {
+            "scaleInDock": 0.3046
+        },
+        "park_16px.tmx#3_City_Props_32x32": {
+            "scaleInDock": 1.0173
+        },
+        "park_16px.tmx#7_Villas_32x32": {
+            "scaleInDock": 1.0055
+        },
         "pixi-art.tmx": {
             "scale": 1.0786458333333333,
             "selectedLayer": 0,
@@ -41,13 +141,35 @@
                 "y": 320.3090294543699
             }
         },
+        "pixi-art.tmx#13_School_32x32": {
+            "scaleInDock": 1
+        },
         "pixi-art.tmx#17_Garden_32x32": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "pixi-art.tmx#18_Fire_Station_32x32": {
+            "scaleInDock": 1
         },
         "pixi-art.tmx#1_Terrains_and_Fences_32x32": {
             "scaleInDock": 1
         },
+        "pixi-art.tmx#20_Subway_and_Train_Station_32x32": {
+            "scaleInDock": 1
+        },
         "pixi-art.tmx#21_Beach_32x32": {
+            "scaleInDock": 1
+        },
+        "pixi-art.tmx#22_Post_Office_32x32": {
+            "scaleInDock": 1
+        },
+        "pixi-art.tmx#24_Additional_Houses_32x32": {
+            "scaleInDock": 1
+        },
+        "pixi-art.tmx#2_City_Terrains_32x32": {
+            "scaleInDock": 1
+        },
+        "pixi-art.tmx#3_City_Props_32x32": {
             "scaleInDock": 1
         },
         "pixi-art.tmx#8_Worksite_32x32": {
@@ -66,8 +188,12 @@
             "scaleInEditor": 1
         }
     },
-    "last.imagePath": "/home/pras/Downloads/modernexteriors-win/Modern_Exteriors_32x32/ME_Theme_Sorter_32x32",
+    "last.exportedFilePath": "/home/pras/Desktop/project/pixi-art/raw-assets/main{m}/maps/park",
+    "last.imagePath": "/home/pras/Desktop/project/pixi-art/raw-assets/main{m}/characters/main/idle",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
     "openFiles": [
     ],
     "project": "pixi-art.tiled-project",
@@ -84,5 +210,9 @@
         "11_Camping_32x32.tsx"
     ],
     "tileset.embedInMap": true,
-    "tileset.lastUsedFormat": "tsx"
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
 }

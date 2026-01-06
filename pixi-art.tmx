@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="2">
+ <editorsettings>
+  <export target="raw-assets/main{m}/maps/garden/garden_layer.json" format="json"/>
+ </editorsettings>
  <tileset firstgid="1" name="21_Beach_32x32" tilewidth="32" tileheight="32" tilecount="4000" columns="32">
   <image source="../../../Downloads/modernexteriors-win/Modern_Exteriors_32x32/ME_Theme_Sorter_32x32/21_Beach_32x32.png" width="1024" height="4000"/>
  </tileset>
@@ -30,7 +33,10 @@
  <tileset firstgid="34719" name="2_City_Terrains_32x32" tilewidth="32" tileheight="32" tilecount="6077" columns="59">
   <image source="../../../Downloads/modernexteriors-win/Modern_Exteriors_32x32/ME_Theme_Sorter_32x32/2_City_Terrains_32x32.png" width="1888" height="3296"/>
  </tileset>
- <layer id="1" name="Tile Layer 1" width="30" height="20" visible="0">
+ <tileset firstgid="40796" name="3_City_Props_32x32" tilewidth="32" tileheight="32" tilecount="7168" columns="32">
+  <image source="../../../Downloads/modernexteriors-win/Modern_Exteriors_32x32/ME_Theme_Sorter_32x32/3_City_Props_32x32.png" width="1024" height="7168"/>
+ </tileset>
+ <layer id="1" name="Tile Layer 1" width="30" height="20">
   <data encoding="csv">
 4193,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4194,4195,
 4225,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4226,4227,
@@ -78,4 +84,31 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <layer id="3" name="Tile Layer 3" width="30" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42300,42301,42302,42303,42304,42305,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42332,42333,42334,42335,42336,42337,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42364,42365,42366,42367,42368,42369,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42396,42397,42398,42399,42400,42401,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42428,42429,42430,42431,42432,42433,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42460,42461,42462,42463,42464,42465,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42492,42493,42494,42495,42496,42497,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42524,42525,42526,42527,42528,42529,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42556,42557,42558,42559,42560,42561,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42588,42589,42590,42591,42592,42593,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="5" name="Object Layer 1">
+  <object id="1" name="wind_turbine" type="GameObjects" x="544.4" y="62.1149" width="224" height="320"/>
+ </objectgroup>
 </map>

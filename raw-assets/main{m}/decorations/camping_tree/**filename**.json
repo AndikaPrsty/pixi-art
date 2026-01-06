@@ -1,0 +1,29 @@
+{ "frames": [
+   {
+    "filename": "ME_Singles_Camping_32x32_Tree_328.png",
+    "frame": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 64, "h": 64 },
+    "sourceSize": { "w": 64, "h": 64 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.x-dev",
+  "image": "ME_Singles_Camping_32x32_Tree_328-sheet.png",
+  "format": "RGBA8888",
+  "size": { "w": 64, "h": 64 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+   { "name": "leaves", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 64, "h": 48 } }] },
+   { "name": "trunk", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 48, "w": 64, "h": 16 } }] }
+  ]
+ }
+}

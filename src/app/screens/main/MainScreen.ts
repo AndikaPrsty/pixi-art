@@ -1,7 +1,6 @@
 import { FancyButton } from "@pixi/ui";
 import { animate } from "motion";
 import type { AnimationPlaybackControls } from "motion/react";
-import type { Ticker } from "pixi.js";
 import { Container } from "pixi.js";
 
 import { engine } from "../../getEngine";
@@ -19,14 +18,14 @@ export class MainScreen extends Container {
   private pauseButton: FancyButton;
   private settingsButton: FancyButton;
   private paused = false;
-	private map: Map
-	private player: Player
+  private map: Map;
+  private player: Player;
 
   constructor() {
     super();
 
-		this.map = new Map();
-		this.player = new Player();
+    this.map = new Map();
+    this.player = new Player();
     this.mainContainer = new Container();
     this.addChild(this.mainContainer);
 
@@ -69,9 +68,9 @@ export class MainScreen extends Container {
   public prepare() {}
 
   /** Update the screen */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public update(_time: Ticker) {
+  public update() {
     if (this.paused) return;
+    this.player.update();
   }
 
   /** Pause gameplay - automatically fired when a popup is presented */
@@ -90,22 +89,18 @@ export class MainScreen extends Container {
   public reset() {}
 
   /** Resize the screen, fired whenever window size changes */
-  public resize(width: number, height: number) {
+  public resize(width: number) {
     this.pauseButton.x = 30;
     this.pauseButton.y = 30;
     this.settingsButton.x = width - 30;
     this.settingsButton.y = 30;
-
   }
 
   /** Show screen with animations */
   public async show(): Promise<void> {
     engine().audio.bgm.play("main/sounds/bgm-main.mp3", { volume: 0.5 });
 
-    const elementsToAnimate = [
-      this.pauseButton,
-      this.settingsButton,
-    ];
+    const elementsToAnimate = [this.pauseButton, this.settingsButton];
 
     let finalPromise!: AnimationPlaybackControls;
     for (const element of elementsToAnimate) {
@@ -117,8 +112,8 @@ export class MainScreen extends Container {
       );
     }
 
-		await this.map.show(this);
-		this.player.add(this.map);
+    await this.map.show(this);
+    this.player.add(this.map);
     await finalPromise;
   }
 
