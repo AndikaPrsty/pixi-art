@@ -1,0 +1,42 @@
+{
+  "frames": {
+    "ME_Singles_Villas_32x32_Villa_4.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 288,
+        "h": 416
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 288,
+        "h": 416
+      },
+      "sourceSize": {
+        "w": 288,
+        "h": 416
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"idle": ["ME_Singles_Villas_32x32_Villa_4.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "villa_4.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 288,
+      "h": 416
+    },
+    "scale": 1
+  }
+}

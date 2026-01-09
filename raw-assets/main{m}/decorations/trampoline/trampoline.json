@@ -1,0 +1,115 @@
+{
+  "frames": {
+    "0.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 96,
+        "h": 152
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 96,
+        "h": 152
+      },
+      "sourceSize": {
+        "w": 96,
+        "h": 152
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "1.png": {
+      "frame": {
+        "x": 0,
+        "y": 152,
+        "w": 96,
+        "h": 152
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 96,
+        "h": 152
+      },
+      "sourceSize": {
+        "w": 96,
+        "h": 152
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "2.png": {
+      "frame": {
+        "x": 0,
+        "y": 304,
+        "w": 96,
+        "h": 152
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 96,
+        "h": 152
+      },
+      "sourceSize": {
+        "w": 96,
+        "h": 152
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "3.png": {
+      "frame": {
+        "x": 0,
+        "y": 456,
+        "w": 96,
+        "h": 152
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 96,
+        "h": 152
+      },
+      "sourceSize": {
+        "w": 96,
+        "h": 152
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"idle": ["0.png"],
+		"jump": ["0.png", "1.png", "2.png", "3.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "trampoline.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 96,
+      "h": 608
+    },
+    "scale": 1
+  }
+}

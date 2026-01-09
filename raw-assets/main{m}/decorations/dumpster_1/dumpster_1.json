@@ -1,0 +1,42 @@
+{
+  "frames": {
+    "ME_Singles_City_Props_32x32_Dumpster_1.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 54
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 58,
+        "h": 54
+      },
+      "sourceSize": {
+        "w": 58,
+        "h": 54
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"idle": ["ME_Singles_City_Props_32x32_Dumpster_1.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "dumpster_1.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 58,
+      "h": 54
+    },
+    "scale": 1
+  }
+}

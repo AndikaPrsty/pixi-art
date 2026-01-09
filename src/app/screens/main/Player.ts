@@ -4,7 +4,7 @@ import { Map } from "./Map";
 export class Player {
   public map!: Map;
   private player!: AnimatedSprite;
-  private speed = 1.2;
+  private speed = 0.7;
   private keysPressed: Record<string, boolean> = {};
   private currentDirection: "down" | "back" | "left" | "right" = "down";
   private isMoving = false;
@@ -33,7 +33,7 @@ export class Player {
     this.player.y = 600; // Position in lower area so player appears in front when moving up
     this.player.animationSpeed = 0.2;
     this.player.play();
-    
+
     // Use the map's addPlayer method for proper depth sorting
     await map.addPlayer(this.player);
   }

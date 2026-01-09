@@ -1,0 +1,42 @@
+{
+  "frames": {
+    "ME_Singles_Villas_32x32_Potted_Plant_2.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 28,
+        "h": 56
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 28,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 28,
+        "h": 56
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"idle": ["ME_Singles_Villas_32x32_Potted_Plant_2.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "potted_plant.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 28,
+      "h": 56
+    },
+    "scale": 1
+  }
+}

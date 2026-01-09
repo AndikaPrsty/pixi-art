@@ -1,0 +1,42 @@
+{
+  "frames": {
+    "fence_3_2.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 24,
+        "h": 128
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"idle": ["fence_3_2.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "fence_3_2.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 24,
+      "h": 128
+    },
+    "scale": 1
+  }
+}

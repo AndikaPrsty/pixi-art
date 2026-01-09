@@ -1,0 +1,42 @@
+{
+  "frames": {
+    "ME_Singles_Villas_32x32_Villa_Yard_Props_13.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"idle": ["ME_Singles_Villas_32x32_Villa_Yard_Props_13.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "yard_props_13.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 30,
+      "h": 26
+    },
+    "scale": 1
+  }
+}

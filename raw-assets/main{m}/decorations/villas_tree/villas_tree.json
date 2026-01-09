@@ -25,6 +25,9 @@
       }
     }
   },
+	"animations": {
+		"tree": ["ME_Singles_Villas_32x32_Tree_1.png"]
+	},
   "meta": {
     "app": "http://free-tex-packer.com",
     "version": "0.6.7",

@@ -1,0 +1,42 @@
+{
+  "frames": {
+    "park_fence_1.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 800,
+        "h": 62
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 800,
+        "h": 62
+      },
+      "sourceSize": {
+        "w": 800,
+        "h": 62
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"idle": ["park_fence_1.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "fence_1.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 800,
+      "h": 62
+    },
+    "scale": 1
+  }
+}

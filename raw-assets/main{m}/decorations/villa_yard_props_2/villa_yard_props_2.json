@@ -1,0 +1,42 @@
+{
+  "frames": {
+    "0.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 32
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"idle": ["0.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "villa_yard_props_2.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 26,
+      "h": 32
+    },
+    "scale": 1
+  }
+}

@@ -4,6 +4,8 @@ import {
   Container,
   Sprite,
   Texture as PixiTexture,
+  Graphics,
+  Text,
 } from "pixi.js";
 import { MainScreen } from "./MainScreen";
 
@@ -93,43 +95,11 @@ export class Map {
   private async addDecorations(): Promise<void> {
     console.log("[Map] addDecorations() called");
     try {
-      // Add camping trees at different positions
-      console.log("[Map] Loading camping tree sheet...");
-      const campingTreeSheet = Assets.get("camping_tree.json");
-      console.log("[Map] Camping tree sheet:", campingTreeSheet);
-      
-      if (campingTreeSheet && campingTreeSheet.animations && campingTreeSheet.animations.idle) {
-        console.log("[Map] Adding camping trees...");
-        const tree1 = new AnimatedSprite(campingTreeSheet.animations.idle);
-        tree1.x = 150;
-        tree1.y = 80;
-        tree1.animationSpeed = 0.1;
-        tree1.play();
-        this.objectContainer.addChild(tree1);
-
-        const tree2 = new AnimatedSprite(campingTreeSheet.animations.idle);
-        tree2.x = 300;
-        tree2.y = 120;
-        tree2.animationSpeed = 0.1;
-        tree2.play();
-        this.objectContainer.addChild(tree2);
-
-        const tree3 = new AnimatedSprite(campingTreeSheet.animations.idle);
-        tree3.x = 200;
-        tree3.y = 200;
-        tree3.animationSpeed = 0.1;
-        tree3.play();
-        this.objectContainer.addChild(tree3);
-        console.log("[Map] Camping trees added successfully");
-      } else {
-        console.warn("[Map] Camping tree sheet not found or missing idle animation");
-      }
-
       // Add objects from Tiled map
       console.log("[Map] Starting addTiledObjects...");
       await this.addTiledObjects();
       console.log("[Map] addTiledObjects completed");
-      
+
       // Sort all objects by depth after adding everything
       this.updateDepthSort();
       console.log("[Map] Depth sorting applied");
@@ -145,7 +115,7 @@ export class Map {
       console.log("[Map] Loading park map data...");
       const parkMapData = Assets.get("park.json");
       console.log("[Map] Park map data:", parkMapData);
-      
+
       if (!parkMapData) {
         console.warn("[Map] Park map data not found");
         return;
@@ -153,10 +123,10 @@ export class Map {
 
       console.log("[Map] Processing layers...");
       // Process object layers
-      for (const layer of parkMapData.layers) {
+      for (const [index, layer] of parkMapData.layers.entries()) {
         console.log(`[Map] Layer: ${layer.name}, type: ${layer.type}, visible: ${layer.visible}`);
         if (layer.type === "objectgroup") {
-          await this.processObjectLayer(layer);
+          await this.processObjectLayer(layer, index);
         }
       }
     } catch (error) {
@@ -164,10 +134,10 @@ export class Map {
     }
   }
 
-  private async processObjectLayer(layer: any): Promise<void> {
+  private async processObjectLayer(layer: any, index: number): Promise<void> {
     console.log(`[Map] Processing object layer: ${layer.name}`);
     console.log(`[Map] Layer visible: ${layer.visible}, objects: ${layer.objects?.length || 0}`);
-    
+
     if (!layer.objects) {
       console.log("[Map] No objects in layer");
       return;
@@ -175,20 +145,21 @@ export class Map {
 
     // Process all objects regardless of layer visibility (visibility might be for editor only)
     for (const object of layer.objects) {
+			console.log("object: ", object);
       console.log(`[Map] Processing object: ${object.name} at (${object.x}, ${object.y})`);
-      await this.createObjectSprite(object);
+      await this.createObjectSprite(object, layer, index);
     }
   }
 
-  private async createObjectSprite(object: any): Promise<void> {
+  private async createObjectSprite(object: any, layer: any, index: number): Promise<void> {
     try {
       // Generic object creation based on object name
       // Check if there's a sprite sheet for this object
       const spriteSheet = Assets.get(`${object.name}.json`);
-      
+
       if (spriteSheet && spriteSheet.animations) {
         // Create animated sprite if animation data exists
-        await this.createAnimatedObject(object, spriteSheet);
+        await this.createAnimatedObject(object, spriteSheet, layer, index);
       } else {
         // Try to create static sprite if no animation
         const texture = Assets.get(`${object.name}.png`) || Assets.get(`${object.name}-0.png`);
@@ -203,14 +174,14 @@ export class Map {
     }
   }
 
-  private async createAnimatedObject(object: any, spriteSheet: any): Promise<void> {
+  private async createAnimatedObject(object: any, spriteSheet: any, layer: any, index: number): Promise<void> {
     console.log(`[Map] Creating animated object: ${object.name}`);
-    
+
     // Get the first available animation (or use object name if exists)
-    const animationKey = spriteSheet.animations[object.name] 
-      ? object.name 
+    const animationKey = spriteSheet.animations[object.name]
+      ? object.name
       : Object.keys(spriteSheet.animations)[0];
-      
+
     if (!animationKey || !spriteSheet.animations[animationKey]) {
       console.warn(`[Map] No animation found for ${object.name}`);
       return;
@@ -218,36 +189,41 @@ export class Map {
 
     console.log(`[Map] Using animation: ${animationKey}`);
     const animatedSprite = new AnimatedSprite(spriteSheet.animations[animationKey]);
-    
+
+		console.log("object name: ", object.name);
+
     // Set position from Tiled object
     // In Tiled: (x,y) represents the BOTTOM-LEFT corner of the object
     animatedSprite.x = object.x;
     animatedSprite.y = object.y;
-    
+		animatedSprite.zIndex = index;
+		console.log("anchor: ", animatedSprite.anchor)
+		console.log("pivot: ", animatedSprite.pivot)
+
     // Set default animation properties
-    animatedSprite.animationSpeed = 0.08;
+    // animatedSprite.animationSpeed = 0.08;
     animatedSprite.loop = false;
-    animatedSprite.gotoAndStop(0); // Start with first frame
-    
+    // animatedSprite.gotoAndStop(0); // Start with first frame
+		// const box = new Graphics().rect(animatedSprite.x, animatedSprite.y, animatedSprite.width, animatedSprite.height).fill("white").stroke({ color: 0xff0000, pixelLine: true })
     // Add interactivity based on object type
     this.setupObjectInteraction(animatedSprite, object);
-    
+
     this.objectContainer.addChild(animatedSprite);
-    console.log(`[Map] Added animated object ${object.name} at (${animatedSprite.x}, ${animatedSprite.y})`);
+    console.log(`[Map] Added animated object ${object.name} at (${animatedSprite.x}, ${animatedSprite.y})`, animatedSprite);
   }
 
   private createStaticObject(object: any, texture: any): void {
     console.log(`[Map] Creating static object: ${object.name}`);
-    
+
     const sprite = new Sprite(texture);
-    
+
     // Set position from Tiled object
     sprite.x = object.x;
     sprite.y = object.y;
-    
+
     // Add interactivity based on object type
     this.setupObjectInteraction(sprite, object);
-    
+
     this.objectContainer.addChild(sprite);
     console.log(`[Map] Added static object ${object.name} at (${sprite.x}, ${sprite.y})`);
   }
@@ -258,12 +234,14 @@ export class Map {
       case 'railing_gate':
         sprite.eventMode = 'static';
         sprite.cursor = 'pointer';
-        
+
         let isOpen = false;
         sprite.onpointertap = () => {
           if (sprite instanceof AnimatedSprite) {
+						sprite.animationSpeed = 0.2;
             if (isOpen) {
-              sprite.gotoAndPlay(0);
+							sprite.animationSpeed = -0.2;
+							sprite.play();
               isOpen = false;
               console.log(`[Map] Closing ${object.name}`);
             } else {
@@ -274,14 +252,14 @@ export class Map {
           }
         };
         break;
-        
+
       // Add more object types here as needed
       // case 'door':
       // case 'switch':
       // case 'chest':
       //   // Setup specific interactions
       //   break;
-        
+
       default:
         // No interaction for unknown objects
         break;
@@ -292,15 +270,15 @@ export class Map {
     console.log("[Map] Adding player to object container at position:", player.x, player.y);
     console.log("[Map] Player dimensions:", player.width, player.height);
     console.log("[Map] Object container children before adding player:", this.objectContainer.children.length);
-    
+
     this.objectContainer.addChild(player);
-    
+
     console.log("[Map] Object container children after adding player:", this.objectContainer.children.length);
     console.log("[Map] Player added successfully, updating depth sort...");
-    
+
     // Update depth sort whenever player is added
     this.updateDepthSort();
-    
+
     console.log("[Map] All object container children positions:");
     this.objectContainer.children.forEach((child, index) => {
       console.log(`[Map] Child ${index}: x=${child.x}, y=${child.y}, width=${child.width}, height=${child.height}`);
@@ -310,7 +288,7 @@ export class Map {
   public updateDepthSort(): void {
     console.log("[Map] Running depth sort on object container...");
     console.log("[Map] Object children before sort:", this.objectContainer.children.length);
-    
+
     // Sort children by Y position + height for proper depth ordering
     // Objects with higher bottom position (y + height) appear in front
     this.objectContainer.children.sort((a, b) => {
@@ -318,12 +296,13 @@ export class Map {
       const bBottom = b.y + (b.height || 0);
       return aBottom - bBottom;
     });
-    
+
     console.log("[Map] Object children after sort:", this.objectContainer.children.length);
     console.log("[Map] Final sort order:");
     this.objectContainer.children.forEach((child, index) => {
       const bottom = child.y + (child.height || 0);
       console.log(`[Map] ${index}: bottom=${bottom}, x=${child.x}, y=${child.y}`);
+			child.zIndex = index;
     });
   }
 }

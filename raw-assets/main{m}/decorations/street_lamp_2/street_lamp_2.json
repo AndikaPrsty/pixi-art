@@ -1,0 +1,114 @@
+{
+  "frames": {
+    "1.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 114,
+        "h": 142
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 114,
+        "h": 142
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 142
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "0.png": {
+      "frame": {
+        "x": 114,
+        "y": 0,
+        "w": 120,
+        "h": 144
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 120,
+        "h": 144
+      },
+      "sourceSize": {
+        "w": 120,
+        "h": 144
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "2.png": {
+      "frame": {
+        "x": 234,
+        "y": 0,
+        "w": 114,
+        "h": 144
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 114,
+        "h": 144
+      },
+      "sourceSize": {
+        "w": 114,
+        "h": 144
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "3.png": {
+      "frame": {
+        "x": 348,
+        "y": 0,
+        "w": 120,
+        "h": 146
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 120,
+        "h": 146
+      },
+      "sourceSize": {
+        "w": 120,
+        "h": 146
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"on": ["0.png", "1.png", "2.png", "3.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "street_lamp_2.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 468,
+      "h": 146
+    },
+    "scale": 1
+  }
+}

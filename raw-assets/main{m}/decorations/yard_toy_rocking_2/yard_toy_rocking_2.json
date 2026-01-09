@@ -1,0 +1,42 @@
+{
+  "frames": {
+    "ME_Singles_Villas_32x32_Villa_Yard_Toy_Rocking_2.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 96,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 96,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 96,
+        "h": 58
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+	"animations": {
+		"idle": ["ME_Singles_Villas_32x32_Villa_Yard_Toy_Rocking_2.png"]
+	},
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "yard_toy_rocking_2.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 96,
+      "h": 58
+    },
+    "scale": 1
+  }
+}
