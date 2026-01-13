@@ -6,9 +6,21 @@ import { Entity, type EntityConfig } from "./Entity";
 export class PlayerEntity extends Entity {
   private keysPressed: Record<string, boolean> = {};
   private interactionLocked = false;
+  private keydownHandler: (event: KeyboardEvent) => void;
+  private keyupHandler: (event: KeyboardEvent) => void;
 
   constructor(config: Omit<EntityConfig, "isPlayable">) {
     super({ ...config, isPlayable: true });
+
+    // Store handlers so they can be removed later
+    this.keydownHandler = (event: KeyboardEvent) => {
+      this.keysPressed[event.key] = true;
+    };
+
+    this.keyupHandler = (event: KeyboardEvent) => {
+      this.keysPressed[event.key] = false;
+    };
+
     this.setupKeyboardListeners();
   }
 
@@ -16,13 +28,16 @@ export class PlayerEntity extends Entity {
    * Set up keyboard event listeners
    */
   private setupKeyboardListeners(): void {
-    window.addEventListener("keydown", (event) => {
-      this.keysPressed[event.key] = true;
-    });
+    window.addEventListener("keydown", this.keydownHandler);
+    window.addEventListener("keyup", this.keyupHandler);
+  }
 
-    window.addEventListener("keyup", (event) => {
-      this.keysPressed[event.key] = false;
-    });
+  /**
+   * Clean up resources and remove event listeners
+   */
+  public cleanup(): void {
+    window.removeEventListener("keydown", this.keydownHandler);
+    window.removeEventListener("keyup", this.keyupHandler);
   }
 
   /**

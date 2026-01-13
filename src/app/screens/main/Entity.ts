@@ -15,7 +15,7 @@ export interface EntityConfig {
  * Base Entity class for all characters (players, NPCs, etc.)
  * This class handles common behavior like movement, animation, and collision
  */
-export class Entity {
+export abstract class Entity {
   public sprite!: AnimatedSprite;
   public map!: Map;
   protected speed: number;
@@ -47,11 +47,9 @@ export class Entity {
   }
 
   /**
-   * Update entity state - to be overridden by subclasses
+   * Update entity state - must be implemented by subclasses
    */
-  public update(): void {
-    // Base implementation - subclasses will override
-  }
+  public abstract update(): void;
 
   /**
    * Move the entity by dx, dy if there's no collision
