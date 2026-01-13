@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="65" height="55" tilewidth="16" tileheight="16" infinite="0" nextlayerid="66" nextobjectid="134">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="65" height="55" tilewidth="16" tileheight="16" infinite="0" nextlayerid="67" nextobjectid="135">
  <editorsettings>
   <export target="raw-assets/main{m}/maps/park/park.json" format="json"/>
  </editorsettings>
@@ -83,7 +83,7 @@
 39798,39799,39800,39801,39802,39803,39804,39798,39799,39800,39801,39802,39803,39804,39798,39799,39800,39801,39802,39803,39804,39798,39799,39800,39801,39802,39803,39804,39798,39799,39800,39801,39802,39803,39804,39798,39799,39800,39801,39802,39803,39804,39798,39799,39800,39801,39802,39803,39804,39798,39799,39800,39801,39802,39803,39804,39798,39799,39800,39801,39802,39803,39804,39798,39799
 </data>
  </layer>
- <layer id="7" name="fence_1" width="65" height="55" visible="0">
+ <layer id="7" name="fence_1" width="65" height="55">
   <properties>
    <property name="zIndex" type="int" value="3"/>
   </properties>
@@ -145,7 +145,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="23" name="fence_1" visible="0">
+ <objectgroup id="23" name="fence_1">
   <properties>
    <property name="solid" type="bool" value="true"/>
    <property name="zIndex" type="int" value="3"/>
@@ -248,19 +248,19 @@
  <objectgroup id="34" name="yard_toy_rocking_2" visible="0">
   <object id="73" name="yard_toy_rocking_2" x="752.341" y="383.213" width="96" height="64"/>
  </objectgroup>
- <objectgroup id="60" name="villa_yard_props_21" visible="0">
+ <objectgroup id="60" name="villa_yard_props_21">
   <object id="110" name="villa_yard_props_21" x="496.621" y="288.637" width="32" height="32"/>
  </objectgroup>
- <objectgroup id="59" name="villa_yard_props_20" visible="0">
+ <objectgroup id="59" name="villa_yard_props_20">
   <object id="108" name="villa_yard_props_20" x="480.565" y="320.003" width="32" height="32"/>
  </objectgroup>
- <objectgroup id="58" name="villa_yard_basketball_net_3" visible="0">
+ <objectgroup id="58" name="villa_yard_basketball_net_3">
   <object id="107" name="villa_yard_basketball_net_3" x="464.135" y="207.357" width="32" height="96"/>
  </objectgroup>
- <objectgroup id="57" name="villa_yard_props_2" visible="0">
+ <objectgroup id="57" name="villa_yard_props_2">
   <object id="106" name="villa_yard_props_2" x="672.38" y="271.662" width="32" height="32"/>
  </objectgroup>
- <objectgroup id="56" name="villa_yard_props_1" visible="0">
+ <objectgroup id="56" name="villa_yard_props_1">
   <object id="105" name="villa_yard_props_1" x="672.719" y="192.399" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="55" name="villa_yard_props_18" visible="0">
@@ -269,10 +269,10 @@
  <objectgroup id="54" name="picnic_7" visible="0">
   <object id="103" name="picnic_7" x="719.877" y="256.477" width="96" height="64"/>
  </objectgroup>
- <objectgroup id="51" name="yard_flowers_6" visible="0">
+ <objectgroup id="51" name="yard_flowers_6">
   <object id="100" name="yard_flowers_6" x="784.64" y="191.24" width="48" height="48"/>
  </objectgroup>
- <objectgroup id="33" name="yard_props_15" visible="0">
+ <objectgroup id="33" name="yard_props_15">
   <object id="71" name="yard_props_15" x="272.502" y="415.91" width="32" height="32"/>
   <object id="72" name="yard_props_15" x="272.862" y="448.225" width="32" height="32"/>
  </objectgroup>
@@ -288,7 +288,7 @@
  <objectgroup id="28" name="trampoline" visible="0">
   <object id="59" name="trampoline" x="832.103" y="128.336" width="96" height="160"/>
  </objectgroup>
- <layer id="14" name="fence_2" width="65" height="55" visible="0">
+ <layer id="14" name="fence_2" width="65" height="55">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -350,7 +350,7 @@
  <objectgroup id="24" name="fence_2" visible="0">
   <object id="54" name="fence_2" x="159.5" y="207.422" width="32" height="384"/>
  </objectgroup>
- <objectgroup id="21" name="villas_tree_3" visible="0">
+ <objectgroup id="21" name="villas_tree_3">
   <object id="39" name="villas_tree" x="847.922" y="383.475" width="96" height="128"/>
  </objectgroup>
  <layer id="15" name="fence_4" width="65" height="55" visible="0">
@@ -415,7 +415,7 @@
  <objectgroup id="26" name="fence_4" visible="0">
   <object id="56" name="fence_4" x="384.106" y="480.222" width="560" height="48"/>
  </objectgroup>
- <layer id="17" name="fence_5" width="65" height="55" visible="0">
+ <layer id="17" name="fence_5" width="65" height="55">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -493,7 +493,7 @@
   <object id="95" name="yard_flowers_11" x="766.907" y="511.136" width="64" height="48"/>
   <object id="96" name="yard_flowers_11" x="479.656" y="511.876" width="64" height="48"/>
  </objectgroup>
- <layer id="63" name="fence_3_1" width="65" height="55" visible="0">
+ <layer id="63" name="fence_3_1" width="65" height="55">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -555,7 +555,7 @@
  <objectgroup id="62" name="fence_3_1" visible="0">
   <object id="112" name="fence_3_1" x="935.53" y="336" width="24" height="192"/>
  </objectgroup>
- <layer id="16" name="fence_3_2" width="65" height="55" visible="0">
+ <layer id="16" name="fence_3_2" width="65" height="55">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -617,8 +617,11 @@
  <objectgroup id="25" name="fence_3_2" visible="0">
   <object id="55" name="fence_3" x="935.53" y="207.954" width="24" height="128"/>
  </objectgroup>
- <objectgroup id="4" name="main_gate" class="gate" visible="0">
+ <objectgroup id="4" name="main_gate" class="gate">
   <object id="1" name="railing_gate" x="192.119" y="495.514" width="160" height="96"/>
+ </objectgroup>
+ <objectgroup id="66" name="gate_collider">
+  <object id="134" name="gate_collider" x="232.59" y="557.804" width="96.0549" height="32.9331"/>
  </objectgroup>
  <objectgroup id="19" name="villas_tree_2" visible="0">
   <object id="29" name="villas_tree" x="845.415" y="558.619" width="96" height="128"/>
@@ -636,7 +639,6 @@
   <object id="115" name="collider" x="578.807" y="552.953" width="14.4926" height="13.8826"/>
   <object id="116" name="collider" x="165.149" y="712.875" width="9.7615" height="13.422"/>
   <object id="117" name="collider" x="866.634" y="657.068" width="45.1468" height="20.133"/>
-  <object id="119" name="collider" x="160.454" y="570.13" width="222.073" height="20.133"/>
   <object id="120" name="collider" x="213.532" y="654.933" width="45.1468" height="20.133"/>
   <object id="121" name="collider" x="159.844" y="188.823" width="31.1147" height="400.83"/>
   <object id="122" name="collider" x="367.885" y="512.171" width="15.2523" height="79.3118"/>
