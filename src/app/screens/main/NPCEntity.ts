@@ -25,33 +25,29 @@ export class NPCEntity extends Entity {
     }
     this.directionTimer -= 1;
 
-    // Try to move in current direction
-    const nextX = this.sprite.x + this.direction.x * this.speed;
-    const nextY = this.sprite.y + this.direction.y * this.speed;
-    const npcRect = this.getCollisionRect(nextX, nextY);
-
+    // Try to move in current direction using base class move method
     const wasMoving = this.isMoving;
-    if (!this.map.checkCollision(npcRect)) {
-      this.sprite.x = nextX;
-      this.sprite.y = nextY;
-      this.isMoving = this.direction.x !== 0 || this.direction.y !== 0;
-
-      // Update animation if movement state changed
-      if (this.isMoving !== wasMoving) {
-        this.changeAnimation(this.currentDirection, this.isMoving);
-      }
-
-      // Update depth sorting when moving vertically
-      if (this.direction.y !== 0) {
-        this.updateDepthSorting();
-      }
+    if (this.direction.x !== 0 || this.direction.y !== 0) {
+      this.isMoving = this.move(this.direction.x, this.direction.y);
     } else {
-      // Hit a wall, choose new direction immediately
-      this.directionTimer = 0;
       this.isMoving = false;
     }
 
+    // If hit a wall or stopped, choose new direction
+    if (!this.isMoving && (this.direction.x !== 0 || this.direction.y !== 0)) {
+      this.directionTimer = 0;
+    }
+
+    // Update animation if movement state changed
+    if (this.isMoving !== wasMoving) {
+      this.changeAnimation(this.currentDirection, this.isMoving);
+    }
+
+    // Update depth sorting
+    this.updateDepthSorting();
+
     // Handle NPC interactions with objects
+    const npcRect = this.getCollisionRect(this.sprite.x, this.sprite.y);
     this.handleInteraction(npcRect);
   }
 
