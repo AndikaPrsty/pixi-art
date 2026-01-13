@@ -1,5 +1,6 @@
 import { AnimatedSprite, Assets } from "pixi.js";
 import { Map } from "./Map";
+import { Rectangle } from "pixi.js";
 
 export class Player {
   public map!: Map;
@@ -51,36 +52,48 @@ export class Player {
       this.keysPressed["w"] ||
       this.keysPressed["W"]
     ) {
-      this.player.y -= this.speed;
-      this.currentDirection = "back";
-      this.isMoving = true;
+      const newY = this.player.y - this.speed;
+      if (!this.checkCollision(this.player.x, newY)) {
+        this.player.y = newY;
+        this.isMoving = true;
+      }
+			this.currentDirection = "back";
     }
     if (
       this.keysPressed["ArrowDown"] ||
       this.keysPressed["s"] ||
       this.keysPressed["S"]
     ) {
-      this.player.y += this.speed;
-      this.currentDirection = "down";
-      this.isMoving = true;
+      const newY = this.player.y + this.speed;
+      if (!this.checkCollision(this.player.x, newY)) {
+        this.player.y = newY;
+        this.isMoving = true;
+      }
+			this.currentDirection = "down";
     }
     if (
       this.keysPressed["ArrowLeft"] ||
       this.keysPressed["a"] ||
       this.keysPressed["A"]
     ) {
-      this.player.x -= this.speed;
-      this.currentDirection = "left";
-      this.isMoving = true;
+      const newX = this.player.x - this.speed;
+      if (!this.checkCollision(newX, this.player.y)) {
+        this.player.x = newX;
+        this.isMoving = true;
+      }
+			this.currentDirection = "left";
     }
     if (
       this.keysPressed["ArrowRight"] ||
       this.keysPressed["d"] ||
       this.keysPressed["D"]
     ) {
-      this.player.x += this.speed;
-      this.currentDirection = "right";
-      this.isMoving = true;
+      const newX = this.player.x + this.speed;
+      if (!this.checkCollision(newX, this.player.y)) {
+        this.player.x = newX;
+        this.isMoving = true;
+      }
+			this.currentDirection = "right";
     }
 
     // Change animation if direction changed or movement state changed
@@ -117,5 +130,28 @@ export class Player {
       this.player.textures = sheet.animations[animationKey];
       this.player.gotoAndPlay(0);
     }
+  }
+
+  // Check collision with map colliders
+  private checkCollision(x: number, y: number): boolean {
+    if (!this.map) return false;
+
+    // Create a collision rectangle for the player at the new position
+    // Adjust the collision box to be smaller than the sprite for better gameplay
+    const playerRect = new Rectangle(
+      x + this.player.width * 0.25, // Offset by 25% to center the collision box
+      y + this.player.height * 0.7, // Use lower portion of sprite for collision
+      this.player.width * 0.5,      // 50% width for tighter collision
+      this.player.height * 0.3      // 30% height for feet area
+    );
+
+    // Check map boundaries (map is 65 tiles * 16px = 1040px wide, 55 tiles * 16px = 880px tall)
+    if (playerRect.x < 0 || playerRect.y < 0 ||
+        playerRect.x + playerRect.width > 1040 ||
+        playerRect.y + playerRect.height > 880) {
+      return true; // Collision with boundary
+    }
+
+    return this.map.checkCollision(playerRect);
   }
 }
