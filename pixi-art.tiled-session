@@ -9,6 +9,9 @@
         "."
     ],
     "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
         "/home/pras/Downloads/modernexteriors-win/Modern_Exteriors_32x32/ME_Theme_Sorter_32x32/11_Camping_32x32.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -114,11 +117,11 @@
             "scaleInDock": 1
         },
         "park_16px.tmx": {
-            "scale": 1.4251,
-            "selectedLayer": 41,
+            "scale": 1.6391,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 804.1540944495123,
-                "y": 377.86821977405094
+                "x": 380.6967238118479,
+                "y": 260.20377036178394
             }
         },
         "park_16px.tmx#1_Terrains_and_Fences_32x32": {

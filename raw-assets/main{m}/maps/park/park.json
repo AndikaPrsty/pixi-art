@@ -69,7 +69,7 @@
                  "value":1
                 }],
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":65,
          "x":0,
          "y":0
@@ -165,12 +165,39 @@
          "opacity":1,
          "properties":[
                 {
+                 "name":"solid",
+                 "type":"bool",
+                 "value":true
+                }, 
+                {
                  "name":"zIndex",
                  "type":"int",
                  "value":3
                 }],
          "type":"objectgroup",
          "visible":false,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":64,
+         "name":"object_collider",
+         "objects":[
+                {
+                 "height":18.0687999389909,
+                 "id":113,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":782,
+                 "x":161,
+                 "y":187.642
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -1243,7 +1270,7 @@
          "name":"dumpster_1",
          "objects":[
                 {
-                 "height":80,
+                 "height":54,
                  "id":102,
                  "name":"dumpster_1",
                  "rotation":0,
@@ -1251,7 +1278,7 @@
                  "visible":true,
                  "width":64,
                  "x":543.656,
-                 "y":494.358
+                 "y":498.358
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1265,7 +1292,7 @@
          "name":"dumpster_5",
          "objects":[
                 {
-                 "height":64,
+                 "height":80,
                  "id":101,
                  "name":"dumpster_5",
                  "rotation":0,
@@ -1642,6 +1669,204 @@
         }, 
         {
          "draworder":"topdown",
+         "id":65,
+         "name":"object_collider",
+         "objects":[
+                {
+                 "height":13.8825575131464,
+                 "id":115,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":14.4926484166908,
+                 "x":578.807091515,
+                 "y":552.953084999964
+                }, 
+                {
+                 "height":13.4219912085901,
+                 "id":116,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":9.76150006100909,
+                 "x":165.148839378317,
+                 "y":712.875179735831
+                }, 
+                {
+                 "height":20.1330363248125,
+                 "id":117,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45.1467724665976,
+                 "x":866.634105682997,
+                 "y":657.067884863645
+                }, 
+                {
+                 "height":20.133,
+                 "id":119,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":222.073162027942,
+                 "x":160.453871063388,
+                 "y":570.129949270941
+                }, 
+                {
+                 "height":20.133,
+                 "id":120,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":45.1468,
+                 "x":213.531779671771,
+                 "y":654.932584863645
+                }, 
+                {
+                 "height":400.829723811848,
+                 "id":121,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.1147092184736,
+                 "x":159.843780159844,
+                 "y":188.823134555549
+                }, 
+                {
+                 "height":79.3118176438289,
+                 "id":122,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":15.2523457263132,
+                 "x":367.884778268562,
+                 "y":512.171313434202
+                }, 
+                {
+                 "height":16,
+                 "id":123,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":560.063522591666,
+                 "x":383.137050857178,
+                 "y":511.561222530657
+                }, 
+                {
+                 "height":336.770215264474,
+                 "id":124,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":26.3715298950702,
+                 "x":936.643196037459,
+                 "y":190.348343652004
+                }, 
+                {
+                 "height":34.9815448426056,
+                 "id":125,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64.9448597901405,
+                 "x":479.307415680063,
+                 "y":514.582084438725
+                }, 
+                {
+                 "height":31.0219581469015,
+                 "id":126,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":55.0458701049297,
+                 "x":672.338478529004,
+                 "y":513.097217323302
+                }, 
+                {
+                 "height":37.9512790734508,
+                 "id":127,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":56.0357730944366,
+                 "x":768.359068511186,
+                 "y":512.107314333795
+                }, 
+                {
+                 "height":33.9916671154227,
+                 "id":129,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":55.0458701049296,
+                 "x":881.208009314987,
+                 "y":513.097217323302
+                }, 
+                {
+                 "height":38.9411820629579,
+                 "id":130,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64.9449,
+                 "x":543.651089893091,
+                 "y":510.127508354781
+                }, 
+                {
+                 "height":44.8806,
+                 "id":131,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64.9449,
+                 "x":607.00488122154,
+                 "y":511.117411344288
+                }, 
+                {
+                 "height":15.8624,
+                 "id":132,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16.4725,
+                 "x":943.060522916254,
+                 "y":717.667691308652
+                }, 
+                {
+                 "height":14.8724970104929,
+                 "id":133,
+                 "name":"collider",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":19.4421641259157,
+                 "x":623.81683122154,
+                 "y":551.343795050485
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":47,
          "name":"street_lamp_1",
          "objects":[
@@ -1662,8 +1887,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":64,
- "nextobjectid":113,
+ "nextlayerid":66,
+ "nextobjectid":134,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
