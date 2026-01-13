@@ -28,11 +28,29 @@ type SpriteSheet = {
   animations: Record<string, PixiTexture[]>;
 };
 
+type TiledMapData = {
+  width: number;
+  height: number;
+  tilewidth: number;
+  tileheight: number;
+  layers: TiledLayer[];
+};
+
+type InteractiveObject = {
+  area: Rectangle;
+  onInteract: () => void;
+  label?: string;
+};
+
 export class Map {
   public screen!: MainScreen;
   public container = new Container();
   public objectContainer = new Container(); // Separate container for objects that need depth sorting
   public colliders: Rectangle[] = []; // Store collision rectangles
+  public mapWidth = 1040;
+  public mapHeight = 880;
+  private mapKey = "park";
+  private interactiveObjects: InteractiveObject[] = [];
 
   constructor() {
     // Assets are loaded via the MainScreen bundle, no need to load here
@@ -40,13 +58,14 @@ export class Map {
     this.container.addChild(this.objectContainer);
   }
 
-  public async show(screen: MainScreen): Promise<void> {
+  public async show(screen: MainScreen, mapKey = "park"): Promise<void> {
     this.screen = screen;
+    this.mapKey = mapKey;
 
     console.log("[Map] show() called");
 
     // Park image should be available from the "main" asset bundle
-    const mapAsset = Assets.get("park.png");
+    const mapAsset = Assets.get(`${this.mapKey}.png`);
     console.log("[Map] mapAsset:", mapAsset);
     console.log(
       "[Map] mapAsset instanceof Texture:",
@@ -131,13 +150,19 @@ export class Map {
     try {
       // Load park map data
       console.log("[Map] Loading park map data...");
-      const parkMapData = Assets.get<{ layers: TiledLayer[] }>("park.json");
+      const parkMapData = Assets.get<TiledMapData>(`${this.mapKey}.json`);
       console.log("[Map] Park map data:", parkMapData);
 
       if (!parkMapData) {
         console.warn("[Map] Park map data not found");
         return;
       }
+
+      // Update map bounds for collision/bounds checks
+      this.mapWidth = parkMapData.width * parkMapData.tilewidth;
+      this.mapHeight = parkMapData.height * parkMapData.tileheight;
+      this.colliders = [];
+      this.interactiveObjects = [];
 
       console.log("[Map] Processing layers...");
       // Process object layers
@@ -149,6 +174,13 @@ export class Map {
           await this.processObjectLayer(layer, index);
         }
       }
+
+      this.addNpc();
+      this.addInteractiveObject(
+        new Rectangle(560, 560, 40, 40),
+        () => console.log("[Interact] You inspected the bench."),
+        "Bench",
+      );
     } catch (error) {
       console.warn("[Map] Failed to process Tiled objects:", error);
     }
@@ -225,6 +257,40 @@ export class Map {
     } catch (error) {
       console.warn(`[Map] Failed to create object ${object.name}:`, error);
     }
+  }
+
+  private addNpc(): void {
+    const sheet = Assets.get<SpriteSheet>("player.json");
+    const idle = sheet?.animations?.idle;
+    if (!idle) return;
+
+    const npc = new AnimatedSprite(idle);
+    npc.x = 420;
+    npc.y = 620;
+    npc.animationSpeed = 0.12;
+    npc.loop = true;
+    npc.play();
+    npc.zIndex = this.objectContainer.children.length;
+    this.objectContainer.addChild(npc);
+  }
+
+  private addInteractiveObject(
+    area: Rectangle,
+    onInteract: () => void,
+    label?: string,
+  ) {
+    const graphic = new Graphics()
+      .rect(area.x, area.y, area.width, area.height)
+      .fill({ color: 0xffff00, alpha: 0.08 })
+      .stroke({ color: 0xffff00, width: 1, alpha: 0.25 });
+    graphic.zIndex = this.objectContainer.children.length;
+    this.objectContainer.addChild(graphic);
+
+    this.interactiveObjects.push({ area, onInteract, label });
+  }
+
+  public getNearestInteraction(rect: Rectangle): InteractiveObject | undefined {
+    return this.interactiveObjects.find((item) => item.area.intersects(rect));
   }
 
   private async createAnimatedObject(

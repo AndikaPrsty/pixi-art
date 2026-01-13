@@ -5,11 +5,12 @@ import { Rectangle } from "pixi.js";
 export class Player {
   public map!: Map;
   private player!: AnimatedSprite;
-  private speed = 0.7;
+  private speed = 0.9;
   private keysPressed: Record<string, boolean> = {};
   private currentDirection: "down" | "back" | "left" | "right" = "down";
   private isMoving = false;
   private lastSortY = -1;
+  private interactionLocked = false;
 
   constructor() {
     this.setupKeyboardListeners();
@@ -46,17 +47,15 @@ export class Player {
     const wasMoving = this.isMoving;
     this.isMoving = false;
 
-    // Check arrow keys and WASD
+    let dx = 0;
+    let dy = 0;
+
     if (
       this.keysPressed["ArrowUp"] ||
       this.keysPressed["w"] ||
       this.keysPressed["W"]
     ) {
-      const newY = this.player.y - this.speed;
-      if (!this.checkCollision(this.player.x, newY)) {
-        this.player.y = newY;
-        this.isMoving = true;
-      }
+      dy -= 1;
       this.currentDirection = "back";
     }
     if (
@@ -64,11 +63,7 @@ export class Player {
       this.keysPressed["s"] ||
       this.keysPressed["S"]
     ) {
-      const newY = this.player.y + this.speed;
-      if (!this.checkCollision(this.player.x, newY)) {
-        this.player.y = newY;
-        this.isMoving = true;
-      }
+      dy += 1;
       this.currentDirection = "down";
     }
     if (
@@ -76,11 +71,7 @@ export class Player {
       this.keysPressed["a"] ||
       this.keysPressed["A"]
     ) {
-      const newX = this.player.x - this.speed;
-      if (!this.checkCollision(newX, this.player.y)) {
-        this.player.x = newX;
-        this.isMoving = true;
-      }
+      dx -= 1;
       this.currentDirection = "left";
     }
     if (
@@ -88,12 +79,21 @@ export class Player {
       this.keysPressed["d"] ||
       this.keysPressed["D"]
     ) {
-      const newX = this.player.x + this.speed;
-      if (!this.checkCollision(newX, this.player.y)) {
+      dx += 1;
+      this.currentDirection = "right";
+    }
+
+    if (dx !== 0 || dy !== 0) {
+      const length = Math.hypot(dx, dy);
+      const scale = length === 0 ? 0 : this.speed / length;
+      const newX = this.player.x + dx * scale;
+      const newY = this.player.y + dy * scale;
+
+      if (!this.checkCollision(newX, newY)) {
         this.player.x = newX;
+        this.player.y = newY;
         this.isMoving = true;
       }
-      this.currentDirection = "right";
     }
 
     // Change animation if direction changed or movement state changed
@@ -108,6 +108,21 @@ export class Player {
     if (this.isMoving && Math.abs(this.player.y - this.lastSortY) > 5) {
       this.map.updateDepthSort();
       this.lastSortY = this.player.y;
+    }
+
+    const interactionRect = this.getCollisionRect(this.player.x, this.player.y);
+    const target = this.map.getNearestInteraction(interactionRect);
+    const interactKey =
+      this.keysPressed["e"] ||
+      this.keysPressed["E"] ||
+      this.keysPressed["Enter"];
+
+    if (target && interactKey && !this.interactionLocked) {
+      this.interactionLocked = true;
+      target.onInteract();
+    }
+    if (!interactKey) {
+      this.interactionLocked = false;
     }
   }
 
@@ -138,23 +153,27 @@ export class Player {
 
     // Create a collision rectangle for the player at the new position
     // Adjust the collision box to be smaller than the sprite for better gameplay
-    const playerRect = new Rectangle(
-      x + this.player.width * 0.25, // Offset by 25% to center the collision box
-      y + this.player.height * 0.7, // Use lower portion of sprite for collision
-      this.player.width * 0.5, // 50% width for tighter collision
-      this.player.height * 0.3, // 30% height for feet area
-    );
+    const playerRect = this.getCollisionRect(x, y);
 
-    // Check map boundaries (map is 65 tiles * 16px = 1040px wide, 55 tiles * 16px = 880px tall)
+    // Check map boundaries (using dynamic map size)
     if (
       playerRect.x < 0 ||
       playerRect.y < 0 ||
-      playerRect.x + playerRect.width > 1040 ||
-      playerRect.y + playerRect.height > 880
+      playerRect.x + playerRect.width > this.map.mapWidth ||
+      playerRect.y + playerRect.height > this.map.mapHeight
     ) {
       return true; // Collision with boundary
     }
 
     return this.map.checkCollision(playerRect);
+  }
+
+  private getCollisionRect(x: number, y: number): Rectangle {
+    return new Rectangle(
+      x + this.player.width * 0.25, // Offset by 25% to center the collision box
+      y + this.player.height * 0.7, // Use lower portion of sprite for collision
+      this.player.width * 0.5, // 50% width for tighter collision
+      this.player.height * 0.3, // 30% height for feet area
+    );
   }
 }
