@@ -8,6 +8,7 @@ import { PausePopup } from "../../popups/PausePopup";
 import { SettingsPopup } from "../../popups/SettingsPopup";
 import { Map } from "./Map";
 import { Player } from "./Player";
+import { NPCEntity } from "./NPCEntity";
 
 /** The screen that holds the app */
 export class MainScreen extends Container {
@@ -20,12 +21,19 @@ export class MainScreen extends Container {
   private paused = false;
   private map: Map;
   private player: Player;
+  private npc: NPCEntity;
 
   constructor() {
     super();
 
     this.map = new Map();
     this.player = new Player();
+    this.npc = new NPCEntity({
+      x: 420,
+      y: 620,
+      speed: 0.6,
+      spriteSheet: "player.json",
+    });
     this.mainContainer = new Container();
     this.addChild(this.mainContainer);
 
@@ -70,8 +78,8 @@ export class MainScreen extends Container {
   /** Update the screen */
   public update() {
     if (this.paused) return;
-    this.map.update();
     this.player.update();
+    this.npc.update();
   }
 
   /** Pause gameplay - automatically fired when a popup is presented */
@@ -112,7 +120,8 @@ export class MainScreen extends Container {
     }
 
     await this.map.show(this);
-    this.player.add(this.map);
+    await this.player.add(this.map);
+    await this.npc.initialize(this.map, 420, 620);
     await finalPromise;
   }
 
