@@ -56,11 +56,6 @@ export class Map {
     collider?: Rectangle;
     isOpen: boolean;
   } = { isOpen: false };
-  private npc?: AnimatedSprite;
-  private npcDirection = { x: 0, y: 0 };
-  private npcDirectionTimer = 0;
-  private npcInteractionLocked = false;
-  private npcSpeed = 0.6;
 
   constructor() {
     // Assets are loaded via the MainScreen bundle, no need to load here
@@ -185,8 +180,6 @@ export class Map {
           await this.processObjectLayer(layer, index);
         }
       }
-
-      this.addNpc();
     } catch (error) {
       console.warn("[Map] Failed to process Tiled objects:", error);
     }
@@ -302,26 +295,6 @@ export class Map {
       this.gateState.sprite.play();
     }
     this.applyGateColliderState();
-  }
-
-  private addNpc(): void {
-    const sheet = Assets.get<SpriteSheet>("player.json");
-    const idle = sheet?.animations?.idle;
-    if (!idle) return;
-
-    const npc = new AnimatedSprite(idle);
-    npc.x = 420;
-    npc.y = 620;
-    npc.animationSpeed = 0.12;
-    npc.loop = true;
-    npc.play();
-    npc.zIndex = this.objectContainer.children.length;
-    this.objectContainer.addChild(npc);
-    this.npc = npc;
-    this.npcDirection = { x: 0, y: 0 };
-    this.npcDirectionTimer = 0;
-    this.npcInteractionLocked = false;
-    this.updateNpcAnimation(false);
   }
 
   private addInteractiveObject(
@@ -494,86 +467,39 @@ export class Map {
     });
   }
 
-  public update(): void {
-    this.updateNpc();
-  }
-
-  private updateNpc(): void {
-    if (!this.npc) return;
-
-    if (this.npcDirectionTimer <= 0) {
-      this.setNpcDirection();
-    }
-    this.npcDirectionTimer -= 1;
-
-    const nextX = this.npc.x + this.npcDirection.x * this.npcSpeed;
-    const nextY = this.npc.y + this.npcDirection.y * this.npcSpeed;
-    const npcRect = this.getCollisionRectForSprite(this.npc, nextX, nextY);
-
-    if (!this.checkCollision(npcRect)) {
-      this.npc.x = nextX;
-      this.npc.y = nextY;
-      this.updateNpcAnimation(
-        this.npcDirection.x !== 0 || this.npcDirection.y !== 0,
-      );
-      if (this.npcDirection.y !== 0) {
-        this.updateDepthSort();
-      }
-    } else {
-      this.npcDirectionTimer = 0;
-    }
-
-    const target = this.getNearestInteraction(npcRect);
-    if (target && !this.npcInteractionLocked) {
-      this.npcInteractionLocked = true;
-      target.onInteract();
-      this.npcDirectionTimer = Math.max(this.npcDirectionTimer, 45);
-    }
-    if (!target) {
-      this.npcInteractionLocked = false;
-    }
-  }
-
-  private setNpcDirection(): void {
-    const directions = [
-      { x: 1, y: 0 },
-      { x: -1, y: 0 },
-      { x: 0, y: 1 },
-      { x: 0, y: -1 },
-      { x: 0, y: 0 },
-    ];
-    this.npcDirection =
-      directions[Math.floor(Math.random() * directions.length)];
-    this.npcDirectionTimer = 90 + Math.floor(Math.random() * 60);
-    this.updateNpcAnimation(
-      this.npcDirection.x !== 0 || this.npcDirection.y !== 0,
+  public async addEntity(entity: AnimatedSprite) {
+    console.log(
+      "[Map] Adding entity to object container at position:",
+      entity.x,
+      entity.y,
     );
+    console.log("[Map] Entity dimensions:", entity.width, entity.height);
+    console.log(
+      "[Map] Object container children before adding entity:",
+      this.objectContainer.children.length,
+    );
+
+    this.objectContainer.addChild(entity);
+
+    console.log(
+      "[Map] Object container children after adding entity:",
+      this.objectContainer.children.length,
+    );
+    console.log("[Map] Entity added successfully, updating depth sort...");
+
+    // Update depth sort whenever entity is added
+    this.updateDepthSort();
+
+    console.log("[Map] All object container children positions:");
+    this.objectContainer.children.forEach((child, index) => {
+      console.log(
+        `[Map] Child ${index}: x=${child.x}, y=${child.y}, width=${child.width}, height=${child.height}`,
+      );
+    });
   }
 
-  private updateNpcAnimation(moving: boolean): void {
-    if (!this.npc) return;
-    const sheet = Assets.get<SpriteSheet>("player.json");
-    const dir = this.npcDirection;
-    const primaryDirection =
-      Math.abs(dir.x) > Math.abs(dir.y)
-        ? dir.x > 0
-          ? "right"
-          : "left"
-        : dir.y > 0
-          ? "down"
-          : "back";
-    const animationKey = moving
-      ? primaryDirection === "down"
-        ? "walk"
-        : `walk_${primaryDirection}`
-      : primaryDirection === "down"
-        ? "idle"
-        : `idle_${primaryDirection}`;
-    const nextTextures = sheet?.animations?.[animationKey];
-    if (nextTextures && this.npc.textures !== nextTextures) {
-      this.npc.textures = nextTextures;
-      this.npc.gotoAndPlay(0);
-    }
+  public update(): void {
+    // Update logic removed - entities update themselves
   }
 
   public updateDepthSort(): void {
