@@ -57,7 +57,7 @@ export class Player {
         this.player.y = newY;
         this.isMoving = true;
       }
-			this.currentDirection = "back";
+      this.currentDirection = "back";
     }
     if (
       this.keysPressed["ArrowDown"] ||
@@ -69,7 +69,7 @@ export class Player {
         this.player.y = newY;
         this.isMoving = true;
       }
-			this.currentDirection = "down";
+      this.currentDirection = "down";
     }
     if (
       this.keysPressed["ArrowLeft"] ||
@@ -81,7 +81,7 @@ export class Player {
         this.player.x = newX;
         this.isMoving = true;
       }
-			this.currentDirection = "left";
+      this.currentDirection = "left";
     }
     if (
       this.keysPressed["ArrowRight"] ||
@@ -93,7 +93,7 @@ export class Player {
         this.player.x = newX;
         this.isMoving = true;
       }
-			this.currentDirection = "right";
+      this.currentDirection = "right";
     }
 
     // Change animation if direction changed or movement state changed
@@ -141,14 +141,17 @@ export class Player {
     const playerRect = new Rectangle(
       x + this.player.width * 0.25, // Offset by 25% to center the collision box
       y + this.player.height * 0.7, // Use lower portion of sprite for collision
-      this.player.width * 0.5,      // 50% width for tighter collision
-      this.player.height * 0.3      // 30% height for feet area
+      this.player.width * 0.5, // 50% width for tighter collision
+      this.player.height * 0.3, // 30% height for feet area
     );
 
     // Check map boundaries (map is 65 tiles * 16px = 1040px wide, 55 tiles * 16px = 880px tall)
-    if (playerRect.x < 0 || playerRect.y < 0 ||
-        playerRect.x + playerRect.width > 1040 ||
-        playerRect.y + playerRect.height > 880) {
+    if (
+      playerRect.x < 0 ||
+      playerRect.y < 0 ||
+      playerRect.x + playerRect.width > 1040 ||
+      playerRect.y + playerRect.height > 880
+    ) {
       return true; // Collision with boundary
     }
 
