@@ -51,6 +51,16 @@ export class Map {
   public mapHeight = 880;
   private mapKey = "park";
   private interactiveObjects: InteractiveObject[] = [];
+  private gateState: {
+    sprite?: AnimatedSprite;
+    collider?: Rectangle;
+    isOpen: boolean;
+  } = { isOpen: false };
+  private npc?: AnimatedSprite;
+  private npcDirection = { x: 0, y: 0 };
+  private npcDirectionTimer = 0;
+  private npcInteractionLocked = false;
+  private npcSpeed = 0.6;
 
   constructor() {
     // Assets are loaded via the MainScreen bundle, no need to load here
@@ -163,6 +173,7 @@ export class Map {
       this.mapHeight = parkMapData.height * parkMapData.tileheight;
       this.colliders = [];
       this.interactiveObjects = [];
+      this.gateState = { isOpen: false };
 
       console.log("[Map] Processing layers...");
       // Process object layers
@@ -176,11 +187,6 @@ export class Map {
       }
 
       this.addNpc();
-      this.addInteractiveObject(
-        new Rectangle(560, 560, 40, 40),
-        () => console.log("[Interact] You inspected the bench."),
-        "Bench",
-      );
     } catch (error) {
       console.warn("[Map] Failed to process Tiled objects:", error);
     }
@@ -234,6 +240,11 @@ export class Map {
     index: number,
   ): Promise<void> {
     try {
+      if (object.name === "gate_collider") {
+        this.registerGateCollider(object);
+        return;
+      }
+
       // Generic object creation based on object name
       // Check if there's a sprite sheet for this object
       const spriteSheet = Assets.get<SpriteSheet>(`${object.name}.json`);
@@ -259,6 +270,40 @@ export class Map {
     }
   }
 
+  private registerGateCollider(object: TiledObject) {
+    const collider = new Rectangle(
+      object.x,
+      object.y,
+      object.width ?? 0,
+      object.height ?? 0,
+    );
+    this.gateState.collider = collider;
+    if (!this.gateState.isOpen) {
+      this.colliders.push(collider);
+    }
+  }
+
+  private applyGateColliderState(): void {
+    const collider = this.gateState.collider;
+    if (!collider) return;
+
+    const hasCollider = this.colliders.includes(collider);
+    if (this.gateState.isOpen && hasCollider) {
+      this.colliders = this.colliders.filter((item) => item !== collider);
+    } else if (!this.gateState.isOpen && !hasCollider) {
+      this.colliders.push(collider);
+    }
+  }
+
+  private toggleGate(): void {
+    this.gateState.isOpen = !this.gateState.isOpen;
+    if (this.gateState.sprite instanceof AnimatedSprite) {
+      this.gateState.sprite.animationSpeed = this.gateState.isOpen ? 0.2 : -0.2;
+      this.gateState.sprite.play();
+    }
+    this.applyGateColliderState();
+  }
+
   private addNpc(): void {
     const sheet = Assets.get<SpriteSheet>("player.json");
     const idle = sheet?.animations?.idle;
@@ -272,19 +317,27 @@ export class Map {
     npc.play();
     npc.zIndex = this.objectContainer.children.length;
     this.objectContainer.addChild(npc);
+    this.npc = npc;
+    this.npcDirection = { x: 0, y: 0 };
+    this.npcDirectionTimer = 0;
+    this.npcInteractionLocked = false;
+    this.updateNpcAnimation(false);
   }
 
   private addInteractiveObject(
     area: Rectangle,
     onInteract: () => void,
     label?: string,
+    showDebug = false,
   ) {
-    const graphic = new Graphics()
-      .rect(area.x, area.y, area.width, area.height)
-      .fill({ color: 0xffff00, alpha: 0.08 })
-      .stroke({ color: 0xffff00, width: 1, alpha: 0.25 });
-    graphic.zIndex = this.objectContainer.children.length;
-    this.objectContainer.addChild(graphic);
+    if (showDebug) {
+      const graphic = new Graphics()
+        .rect(area.x, area.y, area.width, area.height)
+        .fill({ color: 0xffff00, alpha: 0.08 })
+        .stroke({ color: 0xffff00, width: 1, alpha: 0.25 });
+      graphic.zIndex = this.objectContainer.children.length;
+      this.objectContainer.addChild(graphic);
+    }
 
     this.interactiveObjects.push({ area, onInteract, label });
   }
@@ -380,24 +433,20 @@ export class Map {
       case "railing_gate": {
         sprite.eventMode = "static";
         sprite.cursor = "pointer";
-
-        let isOpen = false;
-        sprite.onpointertap = () => {
-          if (sprite instanceof AnimatedSprite) {
-            sprite.animationSpeed = 0.2;
-            if (isOpen) {
-              console.log("colliders: ", this.colliders);
-              sprite.animationSpeed = -0.2;
-              sprite.play();
-              isOpen = false;
-              console.log(`[Map] Closing ${object.name}`);
-            } else {
-              sprite.play();
-              isOpen = true;
-              console.log(`[Map] Opening ${object.name}`);
-            }
-          }
-        };
+        if (sprite instanceof AnimatedSprite) {
+          this.gateState.sprite = sprite;
+          sprite.loop = false;
+        }
+        const area = new Rectangle(
+          object.x,
+          object.y - (object.height ?? sprite.height),
+          object.width ?? sprite.width,
+          object.height ?? sprite.height,
+        );
+        const toggleGate = () => this.toggleGate();
+        sprite.onpointertap = toggleGate;
+        this.addInteractiveObject(area, toggleGate, "Gate");
+        this.applyGateColliderState();
         break;
       }
 
@@ -445,6 +494,88 @@ export class Map {
     });
   }
 
+  public update(): void {
+    this.updateNpc();
+  }
+
+  private updateNpc(): void {
+    if (!this.npc) return;
+
+    if (this.npcDirectionTimer <= 0) {
+      this.setNpcDirection();
+    }
+    this.npcDirectionTimer -= 1;
+
+    const nextX = this.npc.x + this.npcDirection.x * this.npcSpeed;
+    const nextY = this.npc.y + this.npcDirection.y * this.npcSpeed;
+    const npcRect = this.getCollisionRectForSprite(this.npc, nextX, nextY);
+
+    if (!this.checkCollision(npcRect)) {
+      this.npc.x = nextX;
+      this.npc.y = nextY;
+      this.updateNpcAnimation(
+        this.npcDirection.x !== 0 || this.npcDirection.y !== 0,
+      );
+      if (this.npcDirection.y !== 0) {
+        this.updateDepthSort();
+      }
+    } else {
+      this.npcDirectionTimer = 0;
+    }
+
+    const target = this.getNearestInteraction(npcRect);
+    if (target && !this.npcInteractionLocked) {
+      this.npcInteractionLocked = true;
+      target.onInteract();
+      this.npcDirectionTimer = Math.max(this.npcDirectionTimer, 45);
+    }
+    if (!target) {
+      this.npcInteractionLocked = false;
+    }
+  }
+
+  private setNpcDirection(): void {
+    const directions = [
+      { x: 1, y: 0 },
+      { x: -1, y: 0 },
+      { x: 0, y: 1 },
+      { x: 0, y: -1 },
+      { x: 0, y: 0 },
+    ];
+    this.npcDirection =
+      directions[Math.floor(Math.random() * directions.length)];
+    this.npcDirectionTimer = 90 + Math.floor(Math.random() * 60);
+    this.updateNpcAnimation(
+      this.npcDirection.x !== 0 || this.npcDirection.y !== 0,
+    );
+  }
+
+  private updateNpcAnimation(moving: boolean): void {
+    if (!this.npc) return;
+    const sheet = Assets.get<SpriteSheet>("player.json");
+    const dir = this.npcDirection;
+    const primaryDirection =
+      Math.abs(dir.x) > Math.abs(dir.y)
+        ? dir.x > 0
+          ? "right"
+          : "left"
+        : dir.y > 0
+          ? "down"
+          : "back";
+    const animationKey = moving
+      ? primaryDirection === "down"
+        ? "walk"
+        : `walk_${primaryDirection}`
+      : primaryDirection === "down"
+        ? "idle"
+        : `idle_${primaryDirection}`;
+    const nextTextures = sheet?.animations?.[animationKey];
+    if (nextTextures && this.npc.textures !== nextTextures) {
+      this.npc.textures = nextTextures;
+      this.npc.gotoAndPlay(0);
+    }
+  }
+
   public updateDepthSort(): void {
     console.log("[Map] Running depth sort on object container...");
     console.log(
@@ -472,6 +603,19 @@ export class Map {
       );
       child.zIndex = index;
     });
+  }
+
+  public getCollisionRectForSprite(
+    sprite: Sprite | AnimatedSprite,
+    x: number,
+    y: number,
+  ): Rectangle {
+    return new Rectangle(
+      x + sprite.width * 0.25,
+      y + sprite.height * 0.7,
+      sprite.width * 0.5,
+      sprite.height * 0.3,
+    );
   }
 
   // Check if a rectangle collides with any colliders
