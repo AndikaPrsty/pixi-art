@@ -70,6 +70,7 @@ export class MainScreen extends Container {
   /** Update the screen */
   public update() {
     if (this.paused) return;
+    this.map.update();
     this.player.update();
   }
 

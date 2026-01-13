@@ -169,11 +169,6 @@ export class Player {
   }
 
   private getCollisionRect(x: number, y: number): Rectangle {
-    return new Rectangle(
-      x + this.player.width * 0.25, // Offset by 25% to center the collision box
-      y + this.player.height * 0.7, // Use lower portion of sprite for collision
-      this.player.width * 0.5, // 50% width for tighter collision
-      this.player.height * 0.3, // 30% height for feet area
-    );
+    return this.map.getCollisionRectForSprite(this.player, x, y);
   }
 }
